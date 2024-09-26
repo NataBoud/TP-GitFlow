@@ -6,6 +6,11 @@ git checkout -b develop
 echo "Projet Ecommerce" > README.md
 git add .
 git commit -m "Initial commit with README.md and develop branch"
+
+cd ..
+mkdir server-correction-tp && cd server-correction-tp
+git init --bare
+
 git remote add origin file://'C:\Users\Administrateur\Desktop\CDA5\GIT\server-correction-tp'
 git push --set-upstream origin develop
 ```
@@ -78,4 +83,24 @@ git push origin master
 
 git tag -a v1.0.0 -m "Version 1.0.0 - Première version stable"
 git push origin v1.0.0
+```
+
+6. Bug critique
+
+```bash
+git checkout master
+git checkout -b hotfix/critique-affichage
+
+echo "Correction d'un bug d'affichage" > affichage.txt
+git add .
+git commit -m "Correction du bug critique d'affichge"
+git push origin hotfix/critique-affichage
+
+git checkout master
+git merge hotfix/critique-affichage -m "Fusion du hotfix/critique-affichage dans master"
+git push origin master
+
+git checkout develop
+git merge hotfix/critique-affichage -m "Fusion du hotfix/critique-affichage dans develop"
+git push origin develop
 ```
