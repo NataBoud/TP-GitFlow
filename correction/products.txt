@@ -1,0 +1,2 @@
+Strcuture de la gestion des produits 
+Ajout de la fonctionnalité d'ajout de produit 
