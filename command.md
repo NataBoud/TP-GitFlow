@@ -104,3 +104,37 @@ git checkout develop
 git merge hotfix/critique-affichage -m "Fusion du hotfix/critique-affichage dans develop"
 git push origin develop
 ```
+
+
+8. **Résolution de Conflit :**
+```bash
+# Création d'un conflit sur deux branches feature
+git checkout develop
+git checkout -b feature/conflit-test-1
+echo "Contenu initial du fichier de test de conflit" > conflit.txt
+git add conflit.txt
+git commit -m "Ajout du fichier de test de conflit"
+git push origin feature/conflit-test-1
+
+git checkout develop
+git checkout -b feature/conflit-test-2
+echo "Contenu modifié par la branche 2" > conflit.txt
+git add conflit.txt
+git commit -m "Modification du fichier de test de conflit par la branche 2"
+git push origin feature/conflit-test-2
+
+# Fusion de la première branche sans problème
+git checkout develop
+git merge feature/conflit-test-1
+git push origin develop
+
+# Tentative de fusion de la deuxième branche (conflit)
+git merge feature/conflit-test-2
+# Résolution manuelle du conflit dans conflit.txt
+# Modification du fichier pour inclure les deux changements
+
+# Finalisation de la fusion
+git add conflit.txt
+git commit -m "Résolution du conflit dans conflit.txt"
+git push origin develop
+```
